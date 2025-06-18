@@ -17,4 +17,7 @@ git config --global init.defaultBranch main
 git init
 git add .
 git commit -m 'Mensagem'
+# cria o repositorio no github
+git remote add origin COLA_LINK_DO_REPOSITORIO
+git push -u origin main
 ```
