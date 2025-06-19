@@ -5,6 +5,7 @@ python -m venv venv
 .\venv\Scripts\Activate  # Windows
 pip install django
 django-admin startproject project . # o ponto final serve para colocar os arquivos de configuração direto na raiz do projeto.
+python manage.py startapp contact
 ```
 
 # Configurar o Git

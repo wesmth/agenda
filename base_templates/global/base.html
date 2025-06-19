@@ -1,0 +1,22 @@
+{% load static %}
+{# Carrega a tag 'static' do Django, que permite usar arquivos estáticos (CSS, JS, imagens, etc.) com a função {% static 'caminho/do/arquivo' %} #}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'global/css/style.css'%}">
+    {# Importa um arquivo CSS que está na pasta static/global/css/style.css usando a tag do Django #}
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat magnam a maxime culpa quibusdam facilis, ex sequi error. Sint placeat distinctio porro dolores accusantium aliquid rem at velit tempora iusto.
+    </h1>
+</body>
+</html>
