@@ -22,3 +22,17 @@ git commit -m 'Mensagem'
 git remote add origin COLA_LINK_DO_REPOSITORIO
 git push -u origin main
 ```
+
+# Migrando a base de dados
+
+```
+python manage.py makemigrations # como as migrations já estão criadas, você pode ignorar essa linha
+python manage.py migrate
+```
+
+# Criando e modificando a senha de um super usuário Django
+
+```
+python manage.py createsuperuser
+python manage.py changepassword USERNAME
+```
