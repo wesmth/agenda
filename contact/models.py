@@ -1,6 +1,18 @@
 from django.db import models
 from django.utils import timezone  # Importa o timezone pra pegar a data e hora atual certinha
 
+
+class Category (models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+    
+
+    
+
+
+     
 # Classe Contact representa um contato da agenda, tipo um cadastro de pessoa
 class Contact(models.Model):
     # Campo obrigatório: primeiro nome da pessoa, com no máximo 35 caracteres
@@ -28,6 +40,8 @@ class Contact(models.Model):
 
     # Campo opcional: imagem do contato. O upload_to define a pasta onde a imagem vai ser salva com base no ano e mês
     picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
+
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,blank=True,null=True)
 
     # Método que define como o objeto será representado quando for convertido em string
     # Assim, ao exibir no painel admin ou em outros lugares, mostra o nome completo em vez de "Contact object (1)"

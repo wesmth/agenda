@@ -2,7 +2,8 @@
 from django.contrib import admin
 
 # Importando o modelo Contact que está na app 'contact'
-from contact.models import Contact
+from contact.models import Contact,Category
+
 
 # Decorador que registra a classe ContactAdmin como responsável
 # por configurar a exibição do modelo Contact no painel administrativo do Django
@@ -10,7 +11,7 @@ from contact.models import Contact
 class ContactAdmin(admin.ModelAdmin):
     # Define os campos que serão exibidos na listagem de contatos do painel admin
     # Isso facilita a visualização direta dos dados mais importantes
-    list_display = ('first_name', 'last_name', 'phone', 'email')
+    list_display = ('first_name', 'last_name', 'phone', 'email','category')
 
     # Define a ordenação padrão da lista de contatos
     # Nesse caso, ordena por ID (ordem de criação)
@@ -30,3 +31,9 @@ class ContactAdmin(admin.ModelAdmin):
 
     # Define o número máximo de itens que podem ser mostrados de uma vez se clicar em "Mostrar tudo"
     list_max_show_all = 100
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    ordering = ('-id',)
