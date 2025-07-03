@@ -2,26 +2,30 @@
 URL configuration for project project.
 
 Esse arquivo define o mapeamento das URLs principais do projeto.
-Ou seja, quando alguém acessa uma URL no navegador, é aqui que Django descobre qual view mostrar.
+Ou seja, quando alguém acessa uma URL no navegador, é aqui que o Django descobre qual view mostrar.
 
 O `urlpatterns` é uma lista com todas as rotas do projeto.
 
-Documentação: https://docs.djangoproject.com/en/5.2/topics/http/urls/
+Documentação oficial: https://docs.djangoproject.com/en/5.2/topics/http/urls/
 
-Tem 3 tipos de exemplo aqui:
-- Function views (funções como views)
-- Class-based views (views em forma de classe)
-- URLconf de outro app (usar include pra importar rotas de outros apps)
+Tipos de exemplo aqui:
+- Function views → views feitas como funções
+- Class-based views → views feitas como classes
+- URLconf de outro app → usando `include()` pra puxar as rotas de um app separado (como o app 'contact')
 """
 
-from django.contrib import admin
+from django.contrib import admin  # Importa o painel administrativo do Django
+from django.conf.urls.static import static  # Pra servir arquivos estáticos durante o desenvolvimento
+from django.urls import path, include  # path = define rotas | include = importa rotas de outros apps
+from django.conf import settings  # Pega configurações do settings.py
 
-from django.urls import path, include
-# path → pra definir rotas
-# include → pra puxar as rotas de outro app 
-
+# Lista com todas as rotas do projeto
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('contact.urls')),
-    # Quando acessar a raiz do site (/), vai buscar as rotas definidas no arquivo contact/urls.py
+    path('admin/', admin.site.urls),  # Rota do painel de administração: /admin
+    path('', include('contact.urls')),  # Rota principal: se alguém acessar '/', ele vai olhar pro arquivo contact/urls.py
 ]
+
+# Adiciona configurações pra servir arquivos de mídia (imagens, etc) durante o modo de desenvolvimento
+# MEDIA_URL = o prefixo da URL (ex: /media/)
+# MEDIA_ROOT = onde os arquivos estão salvos no sistema de arquivos
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
