@@ -1,28 +1,40 @@
 {% load static %}
+{# Carrega os arquivos estáticos do Django (CSS, JS, imagem, etc) #}
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    {# Define que os caracteres da página aceitam acento, ç, essas porra tudo #}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Deixa o site responsivo (funcionar bonito no celular também) #}
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    {# Importa um arquivo CSS que está na pasta static/global/css/style.css usando a tag do Django #}
+    {# Puxa o Bootstrap, que é um pacote de CSS pronto. Ele já vem com um monte de coisa feita tipo botão, cor, tamanho de fonte, etc #}
 
     <title>Document</title>
+    {# Título que aparece na aba do navegador #}
 </head>
 
 <body class="bg-info">
-    <h1 class="text-3x1 font-bold underline">
+    {# "bg-info" é uma cor do Bootstrap. Nesse caso, é um azul claro como fundo da página #}
+
+    <h1 >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat magnam a maxime culpa quibusdam facilis, ex sequi error. Sint placeat distinctio porro dolores accusantium aliquid rem at velit tempora iusto.
     </h1>
-
-
-
+    {# Isso aqui é um título gigante. Mas tem erro:
+       - "text-3x1" não existe no Bootstrap. Isso aí é erro de digitação, devia ser "text-xl" ou outro válido.
+       - "font-bold" e "underline" são do Tailwind, não do Bootstrap. 
+       Então tu tem que escolher: usa Bootstrap ou usa Tailwind. Misturar dá merda. #}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    {# jQuery, que é tipo um ajudante do JavaScript pra facilitar código interativo #}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    {# Popper serve pro Bootstrap posicionar uns bagulhos tipo tooltip e dropdown certinho na tela #}
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {# Aqui é o JS do Bootstrap mesmo. Se não tiver isso, as firulas tipo modal, collapse, etc não funcionam #}
 </body>
 </html>

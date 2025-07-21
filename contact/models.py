@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone  # Importa o timezone pra garantir que a data/hora esteja correta com fuso e tudo
-
+from django.contrib.auth.models import User
 # Classe que representa uma categoria de contatos (tipo: Família, Amigos, Trabalho, etc.)
 class Category(models.Model):
     class Meta:
@@ -16,7 +16,7 @@ class Category(models.Model):
 # Classe que representa um contato da agenda (tipo uma fichinha de uma pessoa cadastrada)
 class Contact(models.Model):
     class Meta:
-        verbose_name = 'Contato'  # Nome bonitinho que vai aparecer no admin
+        verbose_name = 'Contato'  # Nome que vai aparecer no admin
 
     # Primeiro nome da pessoa. Campo obrigatório. Limite de 35 caracteres.
     first_name = models.CharField(max_length=35)
@@ -49,7 +49,14 @@ class Contact(models.Model):
     # Se a categoria for apagada, esse campo vira NULL (por causa do on_delete=models.SET_NULL).
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
 
+    owner = models.ForeignKey(
+        User, on_delete=models.SET_NULL,
+        blank=True, null=True
+    )
+
     # Define como o contato vai aparecer em representações de texto, como no admin ou no terminal.
     # Em vez de "Contact object (1)", vai mostrar tipo "Maria Silva".
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
+
+

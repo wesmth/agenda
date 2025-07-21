@@ -27,7 +27,7 @@ class ContactAdmin(admin.ModelAdmin):
 
     # Define o número de itens por página na listagem de contatos
     # Evita carregar tudo de uma vez, o que ajuda no desempenho
-    list_per_page = 20
+    list_per_page = 50
 
     # Define o número máximo de itens que podem ser mostrados de uma vez se clicar em "Mostrar tudo"
     list_max_show_all = 100
