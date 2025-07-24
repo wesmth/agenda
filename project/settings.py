@@ -143,3 +143,9 @@ MEDIA_ROOT = BASE_DIR / 'media'  # Caminho onde os arquivos enviados vão ser sa
 
 # Define o tipo padrão para IDs dos models (usa BigAutoField = inteiro grandão)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+try:
+    from project.local_settings import *
+except ImportError:
+    ...

@@ -133,6 +133,7 @@ celerybeat.pid
 .project
 .settings/
 .DS_Store
+project/local_settings.py
 
 # Logs and databases
 *.log
